@@ -1,5 +1,10 @@
 # My code style
 
+## prerequisites
+- https://w.wiki/AiFD
+
+## conventions
+
 Extends... https://github.com/airbnb/javascript
 
 - DTOs naming conventions: https://stackoverflow.com/a/35341664/13274020
