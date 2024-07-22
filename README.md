@@ -13,3 +13,4 @@ Extends... https://github.com/airbnb/javascript
 - Tools
   - https://github.com/lint-staged/lint-staged
   - https://commitlint.js.org
+- https://github.com/alan2207/bulletproof-react
