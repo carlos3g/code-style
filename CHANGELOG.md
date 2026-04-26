@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/carlos3g/code-style/compare/v0.1.0...v0.1.1) (2026-04-26)
+
+
+### Bug Fixes
+
+* **ci:** use Node 24 for npm 11+ trusted publisher OIDC ([f8de77b](https://github.com/carlos3g/code-style/commit/f8de77b54d429ce9e014dfaa9b3d57cd532da23b))
+
 ## 0.1.0 (2026-04-26)
 
 
