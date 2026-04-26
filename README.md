@@ -41,7 +41,7 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(...base, ...jest, { rules: { /* ... */ } }, ...prettier);
 ```
 
-Source lives in [`src/`](./src). Releases are automated via GitHub Actions with [npm trusted publishing](https://docs.npmjs.com/trusted-publishers) — push a `vX.Y.Z` tag and the `release.yml` workflow publishes with provenance, no `NPM_TOKEN` required.
+Source lives in [`src/`](./src). Releases are driven by [release-please](https://github.com/googleapis/release-please-action): conventional commits to `main` accumulate into a Release PR; merging it creates the tag + GitHub Release, and a publish job ships the package to npm with provenance via [trusted publishing](https://docs.npmjs.com/trusted-publishers) — no `NPM_TOKEN` required.
 
 ## Prerequisites
 

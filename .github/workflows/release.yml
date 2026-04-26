@@ -1,28 +1,40 @@
 name: Release
 
-# Triggered by pushing a tag like v1.2.3.
-# Local flow:
-#   yarn version <patch|minor|major>
-#   git commit -am "chore: release vX.Y.Z"
-#   git tag vX.Y.Z
-#   git push origin main --tags
+# Driven by release-please. Flow:
+#   1. push to main with a conventional commit (feat:, fix:, chore!:, etc.)
+#   2. release-please opens/updates a "Release PR" with version bump + CHANGELOG
+#   3. merging that PR creates the tag + GitHub Release
+#   4. the publish job below then publishes to npm with provenance via OIDC
 #
-# Trusted publisher must be configured at:
-#   https://www.npmjs.com/package/@carlos3g/eslint-config/access
-# pointing to:
+# Trusted publisher (configure once at npmjs.com):
 #   repo:     carlos3g/code-style
 #   workflow: .github/workflows/release.yml
-#   environment: (none)
 #
-# No NPM_TOKEN secret required — the workflow authenticates via OIDC.
+# No NPM_TOKEN secret required — auth via OIDC.
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          release-type: node
+
   publish:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,15 +53,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: Verify tag matches package.json version
-        run: |
-          PKG_VERSION=$(node -p "require('./package.json').version")
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
-          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
-            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $PKG_VERSION"
-            exit 1
-          fi
 
       - name: Syntax check presets
         run: yarn check
