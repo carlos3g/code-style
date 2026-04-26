@@ -55,7 +55,7 @@ This repository documents the conventions I follow on personal and professional 
 - **Constants:** `UPPER_CASE` allowed
 - **React components:** `PascalCase`, file `kebab-case.tsx`, **arrow function** + named export
 - **Hooks:** `use-*.ts`, exporting a `useX` function
-- **DTOs** ([reference](https://stackoverflow.com/a/35341664/13274020)):
+- **DTOs** (Spring Boot-style suffixes — same convention I apply on Java projects, [reference](https://stackoverflow.com/a/35341664/13274020)):
   - `*-request.ts` — incoming HTTP payload (validated with `class-validator`)
   - `*-query.ts` — HTTP query params
   - `*-input.ts` — use case input (already enriched with user/context)
@@ -181,6 +181,6 @@ src/
 - Conventional Commits: [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0)
 - Bulletproof React: [github.com/alan2207/bulletproof-react](https://github.com/alan2207/bulletproof-react)
 - Airbnb JS: [github.com/airbnb/javascript](https://github.com/airbnb/javascript)
-- DTO naming: [stackoverflow.com/a/35341664](https://stackoverflow.com/a/35341664/13274020)
+- DTO naming (Spring Boot convention, also applied to TS/Java projects): [stackoverflow.com/a/35341664](https://stackoverflow.com/a/35341664/13274020)
 - lint-staged: [github.com/lint-staged/lint-staged](https://github.com/lint-staged/lint-staged)
 - commitlint: [commitlint.js.org](https://commitlint.js.org)
