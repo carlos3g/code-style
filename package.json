@@ -1,0 +1,76 @@
+{
+  "name": "@carlos3g/eslint-config",
+  "version": "0.0.0",
+  "description": "Shared ESLint flat-config presets for TypeScript, NestJS and Expo/React Native projects",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslint-flat-config",
+    "typescript",
+    "nestjs",
+    "expo",
+    "react-native",
+    "react"
+  ],
+  "homepage": "https://github.com/carlos3g/code-style#readme",
+  "bugs": "https://github.com/carlos3g/code-style/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos3g/code-style.git"
+  },
+  "license": "MIT",
+  "author": "carlos3g",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./base": "./src/base.mjs",
+    "./nest": "./src/nest.mjs",
+    "./expo": "./src/expo.mjs",
+    "./react": "./src/react.mjs",
+    "./jest": "./src/jest.mjs",
+    "./prettier": "./src/prettier.mjs"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "node --check src/*.mjs"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.0.0",
+    "@tanstack/eslint-plugin-query": "^5.95.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.15.1",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-testing-library": "^7.16.2",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.57.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "yarn@4.7.0"
+}

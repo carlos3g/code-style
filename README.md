@@ -1,6 +1,47 @@
 # My code style
 
-This repository documents the conventions I follow on personal and professional projects. Meant as a quick reference for myself, teammates, and agents (Claude Code, Cursor, etc).
+This repository documents the conventions I follow on personal and professional projects, and ships [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) — the ESLint flat-config presets that encode them. Meant as a quick reference for myself, teammates, and agents (Claude Code, Cursor, etc).
+
+## ESLint config (`@carlos3g/eslint-config`)
+
+Multi-preset package with composable presets — install once, pick the preset that matches the stack.
+
+```bash
+yarn add -D @carlos3g/eslint-config eslint typescript
+```
+
+```js
+// eslint.config.mjs — NestJS API
+import nest from '@carlos3g/eslint-config/nest';
+export default nest;
+```
+
+```js
+// eslint.config.mjs — Expo / React Native
+import expo from '@carlos3g/eslint-config/expo';
+export default expo;
+```
+
+Available presets (each is a flat-config array):
+
+| Subpath                            | Use for                                                       |
+| ---------------------------------- | ------------------------------------------------------------- |
+| `@carlos3g/eslint-config/base`     | Any TypeScript project — TS rules + sensible defaults         |
+| `@carlos3g/eslint-config/nest`     | NestJS APIs — base + jest layer + Prettier                    |
+| `@carlos3g/eslint-config/expo`     | Expo / React Native — base + react + tanstack-query + RTL     |
+| `@carlos3g/eslint-config/react`    | React (web) — base + react + react-hooks + Prettier           |
+| `@carlos3g/eslint-config/jest`     | Jest add-on for spec/e2e files                                |
+| `@carlos3g/eslint-config/prettier` | Prettier integration (always last when composing manually)    |
+
+Composing manually:
+
+```js
+import { base, jest, prettier } from '@carlos3g/eslint-config';
+import tseslint from 'typescript-eslint';
+export default tseslint.config(...base, ...jest, { rules: { /* ... */ } }, ...prettier);
+```
+
+Source lives in [`src/`](./src). Releases are automated via GitHub Actions with [npm trusted publishing](https://docs.npmjs.com/trusted-publishers) — push a `vX.Y.Z` tag and the `release.yml` workflow publishes with provenance, no `NPM_TOKEN` required.
 
 ## Prerequisites
 
@@ -24,7 +65,7 @@ This repository documents the conventions I follow on personal and professional 
 
 ## Tooling
 
-- ESLint: [`@carlos3g/eslint-config`](https://github.com/carlos3g/eslint-config) (flat config, `typescript-eslint/recommendedTypeChecked`)
+- ESLint: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (flat config, `typescript-eslint/recommendedTypeChecked`)
 - Prettier:
   ```json
   {
@@ -177,7 +218,7 @@ src/
 
 ## Links
 
-- ESLint config: [github.com/carlos3g/eslint-config](https://github.com/carlos3g/eslint-config)
+- ESLint config: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (this repo)
 - Conventional Commits: [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0)
 - Bulletproof React: [github.com/alan2207/bulletproof-react](https://github.com/alan2207/bulletproof-react)
 - Airbnb JS: [github.com/airbnb/javascript](https://github.com/airbnb/javascript)
