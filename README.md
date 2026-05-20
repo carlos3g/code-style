@@ -24,21 +24,30 @@ export default expo;
 
 Available presets (each is a flat-config array):
 
-| Subpath                            | Use for                                                       |
-| ---------------------------------- | ------------------------------------------------------------- |
-| `@carlos3g/eslint-config/base`     | Any TypeScript project — TS rules + sensible defaults         |
-| `@carlos3g/eslint-config/nest`     | NestJS APIs — base + jest layer + Prettier                    |
-| `@carlos3g/eslint-config/expo`     | Expo / React Native — base + react + tanstack-query + RTL     |
-| `@carlos3g/eslint-config/react`    | React (web) — base + react + react-hooks + Prettier           |
-| `@carlos3g/eslint-config/jest`     | Jest add-on for spec/e2e files                                |
-| `@carlos3g/eslint-config/prettier` | Prettier integration (always last when composing manually)    |
+| Subpath                            | Use for                                                    |
+| ---------------------------------- | ---------------------------------------------------------- |
+| `@carlos3g/eslint-config/base`     | Any TypeScript project — TS rules + sensible defaults      |
+| `@carlos3g/eslint-config/nest`     | NestJS APIs — base + jest layer + Prettier                 |
+| `@carlos3g/eslint-config/expo`     | Expo / React Native — base + react + tanstack-query + RTL  |
+| `@carlos3g/eslint-config/react`    | React (web) — base + react + react-hooks + Prettier        |
+| `@carlos3g/eslint-config/jest`     | Jest add-on for spec/e2e files                             |
+| `@carlos3g/eslint-config/prettier` | Prettier integration (always last when composing manually) |
 
 Composing manually:
 
 ```js
 import { base, jest, prettier } from '@carlos3g/eslint-config';
 import tseslint from 'typescript-eslint';
-export default tseslint.config(...base, ...jest, { rules: { /* ... */ } }, ...prettier);
+export default tseslint.config(
+  ...base,
+  ...jest,
+  {
+    rules: {
+      /* ... */
+    },
+  },
+  ...prettier
+);
 ```
 
 Source lives in [`src/`](./src). Releases are driven by [release-please](https://github.com/googleapis/release-please-action): conventional commits to `main` accumulate into a Release PR; merging it creates the tag + GitHub Release, and a publish job ships the package to npm with provenance via [trusted publishing](https://docs.npmjs.com/trusted-publishers) — no `NPM_TOKEN` required.
@@ -53,7 +62,7 @@ Source lives in [`src/`](./src). Releases are driven by [release-please](https:/
 ## Base stack
 
 - **Language:** TypeScript (`strict: true`, `noImplicitAny`, `strictNullChecks`)
-- **Runtime:** Node.js LTS (`lts/iron` via `.nvmrc`)
+- **Runtime:** Node.js LTS (`lts/jod` via `.nvmrc`)
 - **Package manager:** Yarn 4 (Berry) with `nodeLinker: node-modules`
 - **Monorepo:** [Turborepo](https://turbo.build/) + workspaces (`apps/*`, `packages/*`)
 - **Backend:** [NestJS](https://nestjs.com/) + [Prisma](https://www.prisma.io/) + PostgreSQL
@@ -65,7 +74,7 @@ Source lives in [`src/`](./src). Releases are driven by [release-please](https:/
 
 ## Tooling
 
-- ESLint: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (flat config, `typescript-eslint/recommendedTypeChecked`)
+- ESLint: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (flat config, `typescript-eslint/strictTypeChecked`)
 - Prettier:
   ```json
   {
@@ -218,6 +227,7 @@ src/
 
 ## Links
 
+- Agent / contributor guide: [AGENTS.md](./AGENTS.md)
 - ESLint config: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (this repo)
 - Conventional Commits: [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0)
 - Bulletproof React: [github.com/alan2207/bulletproof-react](https://github.com/alan2207/bulletproof-react)

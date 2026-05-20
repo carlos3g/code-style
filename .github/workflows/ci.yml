@@ -31,3 +31,6 @@ jobs:
 
       - name: Self-lint
         run: yarn lint
+
+      - name: Smoke-test presets
+        run: yarn test

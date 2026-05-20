@@ -38,7 +38,8 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write .",
-    "check": "node --check src/*.mjs"
+    "check": "node --check src/*.mjs",
+    "test": "node test/smoke.mjs"
   },
   "dependencies": {
     "@eslint/js": "^9.0.0",
