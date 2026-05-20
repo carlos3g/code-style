@@ -43,8 +43,8 @@ export default tseslint.config(
       'react/no-unused-prop-types': 'off',
       'react/prop-types': 'off',
       'react/display-name': 'off',
-      '@typescript-eslint/unbound-method': 'off',
-      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
+      '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { attributes: false } }],
     },
   },
   ...prettierPreset
