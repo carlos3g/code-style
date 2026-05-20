@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/carlos3g/code-style/compare/v0.1.1...v0.2.0) (2026-05-20)
+
+
+### Features
+
+* tighten presets to strictTypeChecked ([4919759](https://github.com/carlos3g/code-style/commit/491975940b0fd51b00cec5ef10d8e62fa564a391))
+
 ## [0.1.1](https://github.com/carlos3g/code-style/compare/v0.1.0...v0.1.1) (2026-04-26)
 
 
