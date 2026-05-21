@@ -1,6 +1,6 @@
 {
   "name": "@carlos3g/tsconfig",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Shared TypeScript configs for Node, NestJS, Next.js, Vite and React Native — carlos3g's code style",
   "keywords": [
     "tsconfig",

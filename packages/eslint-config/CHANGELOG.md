@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/carlos3g/code-style/compare/eslint-config-v0.2.0...eslint-config-v0.2.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* allow decorated empty classes and emit decorator metadata at ES2022 ([9beaa9a](https://github.com/carlos3g/code-style/commit/9beaa9ae4d93946aecddec873b74a9330751fcd9))
+
 ## [0.2.0](https://github.com/carlos3g/code-style/compare/v0.1.1...v0.2.0) (2026-05-20)
 
 
