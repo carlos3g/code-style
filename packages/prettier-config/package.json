@@ -1,6 +1,6 @@
 {
   "name": "@carlos3g/prettier-config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Shared Prettier config — carlos3g's code style",
   "keywords": [
     "prettier",
