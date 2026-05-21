@@ -90,7 +90,11 @@ legitimately requires example code to change, change both in the same commit.
 2. Add a `check` and/or `test` script so `turbo run` picks it up.
 3. Register it in `release-please-config.json#packages` and add its path to
    `.release-please-manifest.json` (`"packages/<name>": "0.0.0"`).
-4. Configure a trusted publisher for `@carlos3g/<name>` on npmjs.com **before**
+4. release-please defaults a brand-new component's first release to `1.0.0`.
+   To keep the `0.x` convention, pin it with `"release-as": "0.1.0"` in its
+   `release-please-config.json` entry, then **remove that line once the first
+   release is published** (otherwise every release stays pinned to `0.1.0`).
+5. Configure a trusted publisher for `@carlos3g/<name>` on npmjs.com **before**
    the first release, or the first publish must use a one-time granular token.
 
 ## Releases — never bump versions by hand
