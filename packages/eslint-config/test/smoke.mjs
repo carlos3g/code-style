@@ -58,7 +58,7 @@ try {
 // ── Phase 2: each stack preset flags the rules it promises to ──
 // `settings` pins plugin versions that would otherwise be auto-detected from
 // installed packages — the temp dir has no `jest` or `react` package.
-/** @type {{ preset: string, settings?: object, cases: { file: string, code: string, wants: string[] }[] }[]} */
+/** @type {{ preset: string, settings?: object, cases: { file: string, code: string, wants?: string[], unwanted?: string[] }[] }[]} */
 const suites = [
   {
     preset: 'base',
@@ -83,6 +83,18 @@ const suites = [
         file: 'flow.spec.ts',
         code: "xit('pending', () => {});\n",
         wants: ['jest/no-disabled-tests'],
+      },
+      {
+        file: 'bare-class.ts',
+        code: 'export class Bare {}\n',
+        wants: ['@typescript-eslint/no-extraneous-class'],
+      },
+      {
+        // NestJS modules are empty `@Module()`-decorated classes — `no-extraneous-class`
+        // must allow them via `allowWithDecorator`.
+        file: 'app.module.ts',
+        code: 'const wired = (_t: unknown, _c: unknown): void => {};\n\n@wired\nexport class AppModule {}\n',
+        unwanted: ['@typescript-eslint/no-extraneous-class'],
       },
     ],
   },
@@ -144,7 +156,7 @@ try {
       overrideConfig: settings ? [{ settings }] : [],
     });
 
-    for (const { file, code, wants } of cases) {
+    for (const { file, code, wants = [], unwanted = [] } of cases) {
       const filePath = join(workDir, file);
       writeFileSync(filePath, code);
 
@@ -152,10 +164,14 @@ try {
         const [result] = await eslint.lintFiles([filePath]);
         const fired = new Set(result.messages.map((message) => message.ruleId));
         const missing = wants.filter((rule) => !fired.has(rule));
+        const unexpected = unwanted.filter((rule) => fired.has(rule));
         if (missing.length > 0) {
           fail(`${preset} → ${file}: expected rules never fired: ${missing.join(', ')}`);
+        } else if (unexpected.length > 0) {
+          fail(`${preset} → ${file}: rules fired that should not have: ${unexpected.join(', ')}`);
         } else {
-          pass(`${preset} → ${file}: ${wants.join(', ')}`);
+          const summary = [...wants.map((rule) => `+${rule}`), ...unwanted.map((rule) => `-${rule}`)].join(', ');
+          pass(`${preset} → ${file}: ${summary}`);
         }
       } catch (error) {
         fail(`${preset} → ${file}: preset crashed while linting: ${error.message}`);

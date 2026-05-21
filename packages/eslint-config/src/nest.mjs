@@ -16,6 +16,9 @@ export default tseslint.config(
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/explicit-member-accessibility': 'error',
+      // NestJS modules are intentionally empty `@Module()`-decorated classes —
+      // the decorator is the reason the class exists, so it is not extraneous.
+      '@typescript-eslint/no-extraneous-class': ['error', { allowWithDecorator: true }],
       '@typescript-eslint/naming-convention': [
         'error',
         {
