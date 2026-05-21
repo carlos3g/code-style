@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  verify:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,11 +26,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Syntax check presets
+      - name: Syntax check
         run: yarn check
 
-      - name: Self-lint
+      - name: Lint
         run: yarn lint
 
-      - name: Smoke-test presets
+      - name: Test
         run: yarn test

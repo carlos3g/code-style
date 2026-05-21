@@ -4,7 +4,10 @@ This repository documents the conventions I follow on personal and professional 
 
 ## ESLint config (`@carlos3g/eslint-config`)
 
-Multi-preset package with composable presets — install once, pick the preset that matches the stack.
+The linting rules that encode this style ship as
+[`@carlos3g/eslint-config`](./packages/eslint-config) — composable ESLint
+flat-config presets for TypeScript, NestJS, React and Expo. Install once, pick
+the preset that matches the stack:
 
 ```bash
 yarn add -D @carlos3g/eslint-config eslint typescript
@@ -16,41 +19,9 @@ import nest from '@carlos3g/eslint-config/nest';
 export default nest;
 ```
 
-```js
-// eslint.config.mjs — Expo / React Native
-import expo from '@carlos3g/eslint-config/expo';
-export default expo;
-```
-
-Available presets (each is a flat-config array):
-
-| Subpath                            | Use for                                                    |
-| ---------------------------------- | ---------------------------------------------------------- |
-| `@carlos3g/eslint-config/base`     | Any TypeScript project — TS rules + sensible defaults      |
-| `@carlos3g/eslint-config/nest`     | NestJS APIs — base + jest layer + Prettier                 |
-| `@carlos3g/eslint-config/expo`     | Expo / React Native — base + react + tanstack-query + RTL  |
-| `@carlos3g/eslint-config/react`    | React (web) — base + react + react-hooks + Prettier        |
-| `@carlos3g/eslint-config/jest`     | Jest add-on for spec/e2e files                             |
-| `@carlos3g/eslint-config/prettier` | Prettier integration (always last when composing manually) |
-
-Composing manually:
-
-```js
-import { base, jest, prettier } from '@carlos3g/eslint-config';
-import tseslint from 'typescript-eslint';
-export default tseslint.config(
-  ...base,
-  ...jest,
-  {
-    rules: {
-      /* ... */
-    },
-  },
-  ...prettier
-);
-```
-
-Source lives in [`src/`](./src). Releases are driven by [release-please](https://github.com/googleapis/release-please-action): conventional commits to `main` accumulate into a Release PR; merging it creates the tag + GitHub Release, and a publish job ships the package to npm with provenance via [trusted publishing](https://docs.npmjs.com/trusted-publishers) — no `NPM_TOKEN` required.
+See the [package README](./packages/eslint-config/README.md) for every preset
+and composition details. Source lives in
+[`packages/eslint-config/`](./packages/eslint-config).
 
 ## Prerequisites
 

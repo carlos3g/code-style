@@ -1,12 +1,14 @@
 name: Release
 
-# Driven by release-please. Flow:
+# Driven by release-please in manifest (multi-package) mode. Flow:
 #   1. push to main with a conventional commit (feat:, fix:, chore!:, etc.)
-#   2. release-please opens/updates a "Release PR" with version bump + CHANGELOG
-#   3. merging that PR creates the tag + GitHub Release
-#   4. the publish job below then publishes to npm with provenance via OIDC
+#   2. release-please opens/updates a "Release PR" per changed package, with the
+#      version bump + that package's CHANGELOG
+#   3. merging a Release PR creates the component-scoped tag + GitHub Release
+#   4. the publish job below publishes every released package to npm with
+#      provenance via OIDC
 #
-# Trusted publisher (configure once at npmjs.com):
+# Trusted publisher (configure once per package at npmjs.com):
 #   repo:     carlos3g/code-style
 #   workflow: .github/workflows/release.yml
 #
@@ -24,8 +26,8 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      paths_released: ${{ steps.release.outputs.paths_released }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -33,10 +35,39 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  publish:
+  verify:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Syntax check
+        run: yarn check
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
+
+  publish:
+    needs: [release-please, verify]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path: ${{ fromJSON(needs.release-please.outputs.paths_released) }}
     permissions:
       contents: read
       id-token: write
@@ -56,17 +87,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Syntax check presets
-        run: yarn check
-
-      - name: Self-lint
-        run: yarn lint
-
-      - name: Smoke-test presets
-        run: yarn test
-
-      - name: Publish to npm with provenance
+      - name: Publish ${{ matrix.path }} to npm with provenance
         run: npm publish --provenance --access public
+        working-directory: ${{ matrix.path }}
 
       - name: Setup Node.js for GitHub Packages
         uses: actions/setup-node@v4
@@ -74,7 +97,8 @@ jobs:
           node-version: 24
           registry-url: 'https://npm.pkg.github.com'
 
-      - name: Publish to GitHub Packages
+      - name: Publish ${{ matrix.path }} to GitHub Packages
         run: npm publish --registry=https://npm.pkg.github.com
+        working-directory: ${{ matrix.path }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
