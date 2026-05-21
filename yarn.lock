@@ -180,6 +180,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@carlos3g/commitlint-config@workspace:packages/commitlint-config":
+  version: 0.0.0-use.local
+  resolution: "@carlos3g/commitlint-config@workspace:packages/commitlint-config"
+  dependencies:
+    "@commitlint/config-conventional": "npm:^20.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@carlos3g/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@carlos3g/eslint-config@workspace:packages/eslint-config"
@@ -205,6 +213,44 @@ __metadata:
       optional: true
   languageName: unknown
   linkType: soft
+
+"@carlos3g/prettier-config@workspace:packages/prettier-config":
+  version: 0.0.0-use.local
+  resolution: "@carlos3g/prettier-config@workspace:packages/prettier-config"
+  peerDependencies:
+    prettier: ^3.0.0
+  languageName: unknown
+  linkType: soft
+
+"@carlos3g/tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "@carlos3g/tsconfig@workspace:packages/tsconfig"
+  dependencies:
+    typescript: "npm:^5.6.0"
+  peerDependencies:
+    typescript: ^5.0.0
+  languageName: unknown
+  linkType: soft
+
+"@commitlint/config-conventional@npm:^20.0.0":
+  version: 20.5.3
+  resolution: "@commitlint/config-conventional@npm:20.5.3"
+  dependencies:
+    "@commitlint/types": "npm:^20.5.0"
+    conventional-changelog-conventionalcommits: "npm:^9.2.0"
+  checksum: 10c0/75efad3f9932e5fe6dc93f9c57af47cfe15a44a6c340b915bdddb6c7592425126c318ee0c00339a1d9b271a71fb6eae1afa3fd096af9c7bfcf6b87ea35bfb810
+  languageName: node
+  linkType: hard
+
+"@commitlint/types@npm:^20.5.0":
+  version: 20.5.0
+  resolution: "@commitlint/types@npm:20.5.0"
+  dependencies:
+    conventional-commits-parser: "npm:^6.3.0"
+    picocolors: "npm:^1.1.1"
+  checksum: 10c0/682913a179074251a65990ce37f784849375ba02d5d80a77299580fb34781747cc48087c3516023b748fd76ef38d3b5c26863767532ed739565cb5a80605cb44
+  languageName: node
+  linkType: hard
 
 "@eslint-community/eslint-utils@npm:^4.8.0, @eslint-community/eslint-utils@npm:^4.9.1":
   version: 4.9.1
@@ -383,6 +429,13 @@ __metadata:
   version: 0.2.9
   resolution: "@pkgr/core@npm:0.2.9"
   checksum: 10c0/ac8e4e8138b1a7a4ac6282873aef7389c352f1f8b577b4850778f5182e4a39a5241facbe48361fec817f56d02b51691b383010843fb08b34a8e8ea3614688fd5
+  languageName: node
+  linkType: hard
+
+"@simple-libs/stream-utils@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@simple-libs/stream-utils@npm:1.2.0"
+  checksum: 10c0/2788ac7b167d1b6c81b8c6fae2f5d9688b1f02ab31e9e15b33c9dc2ae920cf7de87869de10679be8957f9adb645c91c8919e271f3e34b6b4ec56daf725522dc7
   languageName: node
   linkType: hard
 
@@ -648,6 +701,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"array-ify@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "array-ify@npm:1.0.0"
+  checksum: 10c0/75c9c072faac47bd61779c0c595e912fe660d338504ac70d10e39e1b8a4a0c9c87658703d619b9d1b70d324177ae29dc8d07dda0d0a15d005597bc4c5a59c70c
+  languageName: node
+  linkType: hard
+
 "array-includes@npm:^3.1.6, array-includes@npm:^3.1.8":
   version: 3.1.9
   resolution: "array-includes@npm:3.1.9"
@@ -897,10 +957,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compare-func@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "compare-func@npm:2.0.0"
+  dependencies:
+    array-ify: "npm:^1.0.0"
+    dot-prop: "npm:^5.1.0"
+  checksum: 10c0/78bd4dd4ed311a79bd264c9e13c36ed564cde657f1390e699e0f04b8eee1fc06ffb8698ce2dfb5fbe7342d509579c82d4e248f08915b708f77f7b72234086cc3
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
   checksum: 10c0/c996b1cfdf95b6c90fee4dae37e332c8b6eb7d106430c17d538034c0ad9a1630cb194d2ab37293b1bdd4d779494beee7786d586a50bd9376fd6f7bcc2bd4c98f
+  languageName: node
+  linkType: hard
+
+"conventional-changelog-conventionalcommits@npm:^9.2.0":
+  version: 9.3.1
+  resolution: "conventional-changelog-conventionalcommits@npm:9.3.1"
+  dependencies:
+    compare-func: "npm:^2.0.0"
+  checksum: 10c0/e3d0dfe5680899da3660a7fbc859de1a92dd9358dc497624c3582596173713a80dcc8236d844116a3ba8403350e244c007c0c7fa5796631aea19e464cc6c2f44
+  languageName: node
+  linkType: hard
+
+"conventional-commits-parser@npm:^6.3.0":
+  version: 6.4.0
+  resolution: "conventional-commits-parser@npm:6.4.0"
+  dependencies:
+    "@simple-libs/stream-utils": "npm:^1.2.0"
+    meow: "npm:^13.0.0"
+  bin:
+    conventional-commits-parser: dist/cli/index.js
+  checksum: 10c0/3595b85b420a3f431dbad65f7c367e803ee8bca500ec24482e8669d4ed5ff6febbb5e9a17c52f07ebe882abdee3418e759245bcb06e4d1e2cce09d638f31d5ce
   languageName: node
   linkType: hard
 
@@ -1002,6 +1093,15 @@ __metadata:
   dependencies:
     esutils: "npm:^2.0.2"
   checksum: 10c0/b6416aaff1f380bf56c3b552f31fdf7a69b45689368deca72d28636f41c16bb28ec3ebc40ace97db4c1afc0ceeb8120e8492fe0046841c94c2933b2e30a7d5ac
+  languageName: node
+  linkType: hard
+
+"dot-prop@npm:^5.1.0":
+  version: 5.3.0
+  resolution: "dot-prop@npm:5.3.0"
+  dependencies:
+    is-obj: "npm:^2.0.0"
+  checksum: 10c0/93f0d343ef87fe8869320e62f2459f7e70f49c6098d948cc47e060f4a3f827d0ad61e83cb82f2bd90cd5b9571b8d334289978a43c0f98fea4f0e99ee8faa0599
   languageName: node
   linkType: hard
 
@@ -1874,6 +1974,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-obj@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "is-obj@npm:2.0.0"
+  checksum: 10c0/85044ed7ba8bd169e2c2af3a178cacb92a97aa75de9569d02efef7f443a824b5e153eba72b9ae3aca6f8ce81955271aa2dc7da67a8b720575d3e38104208cb4e
+  languageName: node
+  linkType: hard
+
 "is-regex@npm:^1.2.1":
   version: 1.2.1
   resolution: "is-regex@npm:1.2.1"
@@ -2114,6 +2221,13 @@ __metadata:
   version: 1.1.0
   resolution: "math-intrinsics@npm:1.1.0"
   checksum: 10c0/7579ff94e899e2f76ab64491d76cf606274c874d8f2af4a442c016bd85688927fcfca157ba6bf74b08e9439dc010b248ce05b96cc7c126a354c3bae7fcb48b7f
+  languageName: node
+  linkType: hard
+
+"meow@npm:^13.0.0":
+  version: 13.2.0
+  resolution: "meow@npm:13.2.0"
+  checksum: 10c0/d5b339ae314715bcd0b619dd2f8a266891928e21526b4800d49b4fba1cc3fff7e2c1ff5edd3344149fac841bc2306157f858e8c4d5eaee4d52ce52ad925664ce
   languageName: node
   linkType: hard
 

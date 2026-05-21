@@ -1,0 +1,56 @@
+{
+  "name": "@carlos3g/tsconfig",
+  "version": "0.0.0",
+  "description": "Shared TypeScript configs for Node, NestJS, Next.js, Vite and React Native — carlos3g's code style",
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "code-style",
+    "nestjs",
+    "nextjs",
+    "expo"
+  ],
+  "homepage": "https://github.com/carlos3g/code-style/tree/main/packages/tsconfig#readme",
+  "bugs": "https://github.com/carlos3g/code-style/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos3g/code-style.git",
+    "directory": "packages/tsconfig"
+  },
+  "license": "MIT",
+  "author": "carlos3g",
+  "exports": {
+    ".": "./base.json",
+    "./base.json": "./base.json",
+    "./node.json": "./node.json",
+    "./nestjs.json": "./nestjs.json",
+    "./react-native.json": "./react-native.json",
+    "./next.json": "./next.json",
+    "./vite-react.json": "./vite-react.json"
+  },
+  "files": [
+    "base.json",
+    "node.json",
+    "nestjs.json",
+    "react-native.json",
+    "next.json",
+    "vite-react.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -19,6 +19,18 @@
     "packages/eslint-config": {
       "package-name": "@carlos3g/eslint-config",
       "component": "eslint-config"
+    },
+    "packages/prettier-config": {
+      "package-name": "@carlos3g/prettier-config",
+      "component": "prettier-config"
+    },
+    "packages/tsconfig": {
+      "package-name": "@carlos3g/tsconfig",
+      "component": "tsconfig"
+    },
+    "packages/commitlint-config": {
+      "package-name": "@carlos3g/commitlint-config",
+      "component": "commitlint-config"
     }
   }
 }

@@ -1,15 +1,21 @@
 # My code style
 
-This repository documents the conventions I follow on personal and professional projects, and ships [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) — the ESLint flat-config presets that encode them. Meant as a quick reference for myself, teammates, and agents (Claude Code, Cursor, etc).
+This repository documents the conventions I follow on personal and professional projects, and ships the [`@carlos3g/*` config packages](#config-packages) that encode them. Meant as a quick reference for myself, teammates, and agents (Claude Code, Cursor, etc).
 
-## ESLint config (`@carlos3g/eslint-config`)
+## Config packages
 
-The linting rules that encode this style ship as
-[`@carlos3g/eslint-config`](./packages/eslint-config) — composable ESLint
-flat-config presets for TypeScript, NestJS, React and Expo. Install once, pick
-the preset that matches the stack:
+The conventions below are published as composable `@carlos3g/*` config packages
+— install them instead of copy-pasting config between projects.
+
+| Package                                                       | What it gives you                                                                 |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [`@carlos3g/eslint-config`](./packages/eslint-config)         | ESLint flat-config presets — `base`, `nest`, `react`, `expo`, `jest`, `prettier`. |
+| [`@carlos3g/prettier-config`](./packages/prettier-config)     | The shared Prettier config.                                                       |
+| [`@carlos3g/tsconfig`](./packages/tsconfig)                   | `tsconfig` bases — `node`, `nestjs`, `next`, `vite-react`, `react-native`.        |
+| [`@carlos3g/commitlint-config`](./packages/commitlint-config) | The shared commitlint (Conventional Commits) config.                              |
 
 ```bash
+# ESLint — pick the preset that matches the stack
 yarn add -D @carlos3g/eslint-config eslint typescript
 ```
 
@@ -19,9 +25,8 @@ import nest from '@carlos3g/eslint-config/nest';
 export default nest;
 ```
 
-See the [package README](./packages/eslint-config/README.md) for every preset
-and composition details. Source lives in
-[`packages/eslint-config/`](./packages/eslint-config).
+Each package's README has full usage. The presets, configs and conventions are
+versioned together in this monorepo.
 
 ## Prerequisites
 
@@ -45,18 +50,11 @@ and composition details. Source lives in
 
 ## Tooling
 
-- ESLint: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (flat config, `typescript-eslint/strictTypeChecked`)
-- Prettier:
-  ```json
-  {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "printWidth": 120,
-    "tabWidth": 2
-  }
-  ```
+- ESLint: [`@carlos3g/eslint-config`](#config-packages) (flat config, `typescript-eslint/strictTypeChecked`)
+- Prettier: [`@carlos3g/prettier-config`](#config-packages) — single quotes, `es5` trailing commas, 120 print width, 2-space tabs
+- TypeScript: [`@carlos3g/tsconfig`](#config-packages) — strict `tsconfig` bases per stack
 - EditorConfig: LF, UTF-8, 2 spaces, final newline, no trailing whitespace
-- Commits: [commitlint](https://commitlint.js.org) with `@commitlint/config-conventional`
+- Commits: [commitlint](https://commitlint.js.org) via [`@carlos3g/commitlint-config`](#config-packages)
 - Pre-commit: [lint-staged](https://github.com/lint-staged/lint-staged) — `prettier --write` + `eslint --fix` on JS/TS; `prettier --write` on JSON/MD/YAML
 - Git hooks: [husky](https://typicode.github.io/husky/)
   - `commit-msg`: commitlint
@@ -199,7 +197,7 @@ src/
 ## Links
 
 - Agent / contributor guide: [AGENTS.md](./AGENTS.md)
-- ESLint config: [`@carlos3g/eslint-config`](#eslint-config-carlos3geslint-config) (this repo)
+- Config packages: [`@carlos3g/*`](#config-packages) (this repo)
 - Conventional Commits: [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0)
 - Bulletproof React: [github.com/alan2207/bulletproof-react](https://github.com/alan2207/bulletproof-react)
 - Airbnb JS: [github.com/airbnb/javascript](https://github.com/airbnb/javascript)

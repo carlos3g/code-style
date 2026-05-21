@@ -1,0 +1,40 @@
+{
+  "name": "@carlos3g/prettier-config",
+  "version": "0.0.0",
+  "description": "Shared Prettier config — carlos3g's code style",
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "code-style"
+  ],
+  "homepage": "https://github.com/carlos3g/code-style/tree/main/packages/prettier-config#readme",
+  "bugs": "https://github.com/carlos3g/code-style/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos3g/code-style.git",
+    "directory": "packages/prettier-config"
+  },
+  "license": "MIT",
+  "author": "carlos3g",
+  "main": "index.json",
+  "exports": {
+    ".": "./index.json"
+  },
+  "files": [
+    "index.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "peerDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

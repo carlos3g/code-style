@@ -1,0 +1,41 @@
+{
+  "name": "@carlos3g/commitlint-config",
+  "version": "0.0.0",
+  "description": "Shared commitlint config — carlos3g's code style",
+  "keywords": [
+    "commitlint",
+    "commitlint-config",
+    "conventional-commits",
+    "code-style"
+  ],
+  "homepage": "https://github.com/carlos3g/code-style/tree/main/packages/commitlint-config#readme",
+  "bugs": "https://github.com/carlos3g/code-style/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos3g/code-style.git",
+    "directory": "packages/commitlint-config"
+  },
+  "license": "MIT",
+  "author": "carlos3g",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "dependencies": {
+    "@commitlint/config-conventional": "^20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
