@@ -20,8 +20,9 @@ its own independently-versioned npm package.
 | ------------------------- | ----------------------------------------------- |
 | `packages/*`              | Published config packages — one workspace each. |
 | `packages/eslint-config/` | `@carlos3g/eslint-config` — the ESLint presets. |
-| `eslint.config.mjs`       | Lints this repo itself.                         |
-| `turbo.json`              | Turborepo task graph (`check`, `test`).         |
+| `examples/*`              | Reference projects that consume the packages.   |
+| `eslint.config.mjs`       | Lints this repo's own `.mjs` files.             |
+| `turbo.json`              | Turborepo task graph (`check`, `lint`, `test`). |
 | `README.md`               | The code-style conventions (source of truth).   |
 | `.github/workflows/`      | CI and release-please automation.               |
 
@@ -43,8 +44,8 @@ its own independently-versioned npm package.
 
 ```bash
 yarn install --immutable   # Yarn 4 via Corepack
-yarn check                 # turbo run check — syntax-check every preset
-yarn lint                  # eslint . — lint the whole repo
+yarn check                 # turbo run check — syntax/type-check every workspace
+yarn lint                  # eslint . + turbo run lint — lint every workspace
 yarn test                  # turbo run test — behavioral smoke tests
 yarn format                # prettier --write
 yarn style                 # format + lint + check
@@ -72,6 +73,15 @@ rules actually fire. Fixtures are written to a throwaway temp dir with a real
 `tsconfig.json`, because the type-checked rules need `projectService`. Copy that
 temp-dir pattern for any manual verification — linting a stray file from the
 repo root yields _"File ignored because outside of base path"_.
+
+## Examples
+
+`examples/*` are real (unpublished) projects that consume the packages via
+`workspace:*`. They are type-checked (`tsc --noEmit`) and linted with the actual
+presets in CI, so a preset or `tsconfig` regression fails the build instead of
+silently rotting the README snippets. `examples/nest-api` hosts the NestJS
+patterns documented in `README.md`. Keep examples green; when a preset change
+legitimately requires example code to change, change both in the same commit.
 
 ## Adding a new package
 

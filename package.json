@@ -19,7 +19,7 @@
   "scripts": {
     "check": "turbo run check",
     "test": "turbo run test",
-    "lint": "eslint .",
+    "lint": "eslint . && turbo run lint",
     "format": "prettier --write .",
     "style": "yarn format && yarn lint && yarn check"
   },

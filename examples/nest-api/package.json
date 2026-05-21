@@ -1,0 +1,25 @@
+{
+  "name": "@examples/nest-api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Reference NestJS service — type-checked and linted against the @carlos3g config packages in CI.",
+  "license": "MIT",
+  "author": "carlos3g",
+  "scripts": {
+    "check": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@carlos3g/eslint-config": "workspace:*",
+    "@carlos3g/tsconfig": "workspace:*",
+    "eslint": "^9.0.0",
+    "typescript": "^5.6.0"
+  }
+}

@@ -4,6 +4,9 @@
     "check": {
       "inputs": ["src/**", "*.json"]
     },
+    "lint": {
+      "inputs": ["src/**", "eslint.config.mjs"]
+    },
     "test": {
       "cache": false
     }

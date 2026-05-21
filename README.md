@@ -82,6 +82,9 @@ versioned together in this monorepo.
 
 ## Backend (NestJS)
 
+The patterns below are compiled, linted code in
+[`examples/nest-api`](./examples/nest-api) — not just snippets.
+
 ### Module layout
 
 ```

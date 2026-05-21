@@ -1,0 +1,10 @@
+{
+  "extends": "@carlos3g/tsconfig/nestjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
