@@ -66,6 +66,8 @@ jobs:
     needs: [release-please, verify]
     runs-on: ubuntu-latest
     strategy:
+      # One package failing to publish must not cancel the others.
+      fail-fast: false
       matrix:
         path: ${{ fromJSON(needs.release-please.outputs.paths_released) }}
     permissions:

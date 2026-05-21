@@ -22,23 +22,19 @@
     },
     "packages/prettier-config": {
       "package-name": "@carlos3g/prettier-config",
-      "component": "prettier-config",
-      "release-as": "0.1.0"
+      "component": "prettier-config"
     },
     "packages/tsconfig": {
       "package-name": "@carlos3g/tsconfig",
-      "component": "tsconfig",
-      "release-as": "0.1.0"
+      "component": "tsconfig"
     },
     "packages/commitlint-config": {
       "package-name": "@carlos3g/commitlint-config",
-      "component": "commitlint-config",
-      "release-as": "0.1.0"
+      "component": "commitlint-config"
     },
     "packages/create-config": {
       "package-name": "@carlos3g/create-config",
-      "component": "create-config",
-      "release-as": "0.1.0"
+      "component": "create-config"
     }
   }
 }
