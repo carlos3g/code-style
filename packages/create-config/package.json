@@ -1,0 +1,43 @@
+{
+  "name": "@carlos3g/create-config",
+  "version": "0.0.0",
+  "description": "Scaffold a project onto carlos3g's shared ESLint, Prettier, TypeScript and commitlint config.",
+  "keywords": [
+    "create",
+    "scaffold",
+    "code-style",
+    "eslint",
+    "prettier",
+    "tsconfig",
+    "commitlint"
+  ],
+  "homepage": "https://github.com/carlos3g/code-style/tree/main/packages/create-config#readme",
+  "bugs": "https://github.com/carlos3g/code-style/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos3g/code-style.git",
+    "directory": "packages/create-config"
+  },
+  "license": "MIT",
+  "author": "carlos3g",
+  "type": "module",
+  "bin": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "check": "node --check index.mjs",
+    "test": "node test/smoke.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

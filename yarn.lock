@@ -195,6 +195,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@carlos3g/create-config@workspace:packages/create-config":
+  version: 0.0.0-use.local
+  resolution: "@carlos3g/create-config@workspace:packages/create-config"
+  bin:
+    create-config: ./index.mjs
+  languageName: unknown
+  linkType: soft
+
 "@carlos3g/eslint-config@workspace:*, @carlos3g/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@carlos3g/eslint-config@workspace:packages/eslint-config"

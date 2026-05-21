@@ -13,11 +13,16 @@ The conventions below are published as composable `@carlos3g/*` config packages
 | [`@carlos3g/prettier-config`](./packages/prettier-config)     | The shared Prettier config.                                                       |
 | [`@carlos3g/tsconfig`](./packages/tsconfig)                   | `tsconfig` bases — `node`, `nestjs`, `next`, `vite-react`, `react-native`.        |
 | [`@carlos3g/commitlint-config`](./packages/commitlint-config) | The shared commitlint (Conventional Commits) config.                              |
+| [`@carlos3g/create-config`](./packages/create-config)         | Scaffolds a new project onto all of the above in one command.                     |
+
+The fastest way to apply this style to a project is the scaffolder — it writes
+every config file and wires `package.json`:
 
 ```bash
-# ESLint — pick the preset that matches the stack
-yarn add -D @carlos3g/eslint-config eslint typescript
+npm create @carlos3g/config
 ```
+
+Or wire a single tool by hand, e.g. ESLint:
 
 ```js
 // eslint.config.mjs — NestJS API

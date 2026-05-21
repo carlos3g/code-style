@@ -31,6 +31,10 @@
     "packages/commitlint-config": {
       "package-name": "@carlos3g/commitlint-config",
       "component": "commitlint-config"
+    },
+    "packages/create-config": {
+      "package-name": "@carlos3g/create-config",
+      "component": "create-config"
     }
   }
 }

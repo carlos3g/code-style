@@ -2,5 +2,6 @@
   "packages/eslint-config": "0.2.0",
   "packages/prettier-config": "0.0.0",
   "packages/tsconfig": "0.0.0",
-  "packages/commitlint-config": "0.0.0"
+  "packages/commitlint-config": "0.0.0",
+  "packages/create-config": "0.0.0"
 }
